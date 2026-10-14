@@ -1,6 +1,7 @@
 {
     "type": "module",
     "dependencies": {
+        "date-fns": "^4.4.0",
         "validator": "^13.15.35"
     }
 }
