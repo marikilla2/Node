@@ -6,7 +6,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-async function nombreFuncion() {
+async function main() {
   try {
     const respuesta = await rl.question("Introduce un número del 1 al 10: ");
 
@@ -23,4 +23,4 @@ async function nombreFuncion() {
   }
 }
 
-nombreFuncion();
+main();
