@@ -14,7 +14,6 @@ const usuarios = [
   { id: 3, nombre: "Leandro", edad: 21, altura: 171 },
 ];
 
-// Convertimos el callback del servidor en async para poder usar await
 const server = http.createServer(async (req, res) => {
   const { method, url } = req;
   console.log(`Petición recibida: ${method} ${url}`);
@@ -49,7 +48,7 @@ const server = http.createServer(async (req, res) => {
 
 async function metodoPost(req, res) {
   try {
-    const body = await json(req); // Lee el stream del body
+    const body = await json(req);
     const { nombre, edad = 0, altura = 0 } = body;
 
     if (!nombre) {
