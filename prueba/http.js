@@ -43,11 +43,10 @@ const server = http.createServer((req, res) => {
       res.statusCode = 200;
       if (method === "GET") {
         res.end(JSON.stringify(usuarios)); //para convertir el objeto a json
+      } else if (req.method === "POST") {
+        metodoPost(req, res);
       } else {
         res.end("Usuario creado");
-      }
-      if (method === "POST") {
-        metodoPost();
       }
       //res.end("<h1>Bienvenido a la página de usuarios</h1>");
       break;
@@ -60,11 +59,20 @@ const server = http.createServer((req, res) => {
   //res.end("Hola desde tu primer servidor de Node.js!");
 });
 
-async function metodoPost() {
-  if (method === "POST") {
+async function metodoPost(req, res) {
+  if (req.method === "POST") {
     try {
       const body = await json(req); // 👈 Lee el stream y lo convierte a objeto JSON
       const { name } = body;
+      const nuevo = {
+        id: usuarios.length + 1,
+        nombre: name,
+        edad: 0,
+        altura: 0,
+      };
+      usuarios.push(nuevo);
+      res.statusCode = 201;
+      res.end(JSON.stringify(nuevo));
     } catch (error) {
       res.statusCode = 400;
       return res.end("Invalid JSON");
