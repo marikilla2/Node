@@ -1,0 +1,4 @@
+INC01;Fallo de conexión;alta
+INC02;Impresora sin papel;baja
+INC03;Error al iniciar sesión;media
+
